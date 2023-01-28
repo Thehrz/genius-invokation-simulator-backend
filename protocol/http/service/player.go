@@ -24,7 +24,7 @@ func initPlayerService() {
 		)...,
 	)
 
-	playerRouter.GET("/login/:player_id",
+	playerRouter.POST("/login/:player_id",
 		middleware.NewInterdictor(middlewareConfig),
 		loginServiceHandler(),
 	)
