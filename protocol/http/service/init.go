@@ -10,4 +10,5 @@ func InitServices(conf config.EngineConfig) {
 	initLocalizeService()
 	initCardDeckService()
 	initRoomInfoService()
+	initCaptchaService()
 }

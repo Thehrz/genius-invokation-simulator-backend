@@ -10,12 +10,16 @@ type LoginResponse struct {
 }
 
 type LoginRequest struct {
-	Password string `json:"password"`
+	Password  string `json:"password"`
+	Captcha   string `json:"captcha"`
+	CaptchaID string `json:"captcha_id"`
 }
 
 type RegisterRequest struct {
-	NickName string `json:"nick_name"`
-	Password string `json:"password"`
+	NickName  string `json:"nick_name"`
+	Password  string `json:"password"`
+	Captcha   string `json:"captcha"`
+	CaptchaID string `json:"captcha_id"`
 }
 
 type RegisterResponse struct {
