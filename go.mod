@@ -7,6 +7,7 @@ require (
 	github.com/go-xorm/xorm v0.7.9
 	github.com/gorilla/websocket v1.5.0
 	github.com/mattn/go-sqlite3 v1.14.16
+	github.com/mojocn/base64Captcha v1.3.5
 	github.com/satori/go.uuid v1.2.0
 	golang.org/x/crypto v0.5.0
 	xorm.io/core v0.7.3
@@ -24,7 +25,6 @@ require (
 	github.com/mattn/go-isatty v0.0.17 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
-	github.com/mojocn/base64Captcha v1.3.5 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.6 // indirect
 	github.com/ugorji/go/codec v1.2.8 // indirect
 	golang.org/x/image v0.3.0 // indirect
