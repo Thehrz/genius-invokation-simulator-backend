@@ -28,7 +28,7 @@ func initPlayerService() {
 		middleware.NewInterdictor(middlewareConfig),
 		loginServiceHandler(),
 	)
-	playerRouter.POST("",
+	playerRouter.POST("/register",
 		registerServiceHandler(),
 	)
 	playerRouter.PATCH(":player_id/password",
@@ -60,14 +60,14 @@ func loginServiceHandler() func(ctx *gin.Context) {
 		} else if has, player := persistence.PlayerPersistence.QueryByID(uint(id)); !has {
 			// 没找到请求玩家，NotFound，登陆失败
 			ctx.JSON(404, message.LoginResponse{Success: false})
-		} else if success, encodeResult := util2.EncodePassword([]byte(request.Password), uint(id)); !success {
+		} else if success, encodeResult := util2.EncodePassword([]byte(request.Password), uint(request.PlayerUID)); !success {
 			// 编码密码失败，InternalError，登陆失败
 			ctx.JSON(500, message.LoginResponse{Success: false})
 		} else if string(encodeResult) != (player.Password) {
 			// 密码校验失败，Forbidden，登陆失败
 			middleware.Interdict(ctx, middlewareConfig)
 			ctx.JSON(403, message.LoginResponse{Success: false})
-		} else if !middleware.AttachToken(ctx, middlewareConfig, uint(id)) {
+		} else if !middleware.AttachToken(ctx, middlewareConfig, uint(request.PlayerUID)) {
 			// 生成token失败，InternalError
 			ctx.JSON(500, message.LoginResponse{Success: false})
 		} else {

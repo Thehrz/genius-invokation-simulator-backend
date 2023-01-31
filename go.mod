@@ -7,11 +7,12 @@ require (
 	github.com/go-xorm/xorm v0.7.9
 	github.com/gorilla/websocket v1.5.0
 	github.com/mattn/go-sqlite3 v1.14.16
-	github.com/mojocn/base64Captcha v1.3.5
 	github.com/satori/go.uuid v1.2.0
 	golang.org/x/crypto v0.5.0
 	xorm.io/core v0.7.3
 )
+
+require github.com/mojocn/base64Captcha v1.3.5
 
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect

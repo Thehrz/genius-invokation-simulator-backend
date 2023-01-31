@@ -10,6 +10,7 @@ type LoginResponse struct {
 }
 
 type LoginRequest struct {
+	PlayerUID uint   `json:"player_uid"`
 	Password  string `json:"password"`
 	Captcha   string `json:"captcha"`
 	CaptchaID string `json:"captcha_id"`
