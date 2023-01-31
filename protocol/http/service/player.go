@@ -51,6 +51,9 @@ func loginServiceHandler() func(ctx *gin.Context) {
 		if !util.BindJson(ctx, &request) {
 			// RequestBody解析失败，BadRequest
 			ctx.AbortWithStatus(400)
+		} else if !util2.VerifyCaptcha(request.CaptchaID, request.Captcha) {
+			// 验证码错误
+			ctx.AbortWithStatus(403)
 		} else if gotten, id := util.QueryPathInt(ctx, ":player_id"); !gotten {
 			// 找不到必要的URL路径参数，BadRequest
 			ctx.AbortWithStatus(400)
@@ -91,6 +94,9 @@ func registerServiceHandler() func(ctx *gin.Context) {
 		if !util.BindJson(ctx, &request) {
 			// RequestBody解析失败，BadRequest
 			ctx.AbortWithStatus(400)
+		} else if !util2.VerifyCaptcha(request.CaptchaID, request.Captcha) {
+			// 验证码错误
+			ctx.AbortWithStatus(403)
 		} else if success, result := persistence.PlayerPersistence.InsertOne(
 			&persistence.Player{
 				NickName: request.NickName,
